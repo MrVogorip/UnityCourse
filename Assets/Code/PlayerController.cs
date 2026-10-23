@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float RotationSpeed = 720f;
     public float JumpSpeed = 5f;
 
+    private BoxInteraction boxInteraction;
     private CharacterController characterController;
     private Animator animator;
     private InputAction moveAction;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        boxInteraction = GetComponent<BoxInteraction>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         moveAction = InputSystem.actions.FindAction("Move");
@@ -35,14 +37,14 @@ public class PlayerController : MonoBehaviour
     {
         var input = moveAction.ReadValue<Vector2>();
         var direction = new Vector3(input.x, 0, input.y);
-        var isRunning = sprintAction.IsPressed();
+        var isRunning = sprintAction.IsPressed() || boxInteraction.HasBox;
         var speed = isRunning ? RunSpeed : WalkSpeed;
 
         if (characterController.isGrounded)
         {
             verticalSpeed = -2f;
 
-            if (jumpAction.WasPressedThisFrame())
+            if (jumpAction.WasPressedThisFrame() && !boxInteraction.HasBox)
             {
                 verticalSpeed = JumpSpeed;
                 PlayAnimation(IsJumpTrigger);
