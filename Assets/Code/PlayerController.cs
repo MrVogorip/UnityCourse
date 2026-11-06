@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform Camera;
+    
     public float WalkSpeed = 2.5f;
     public float RunSpeed = 5f;
     public float RotationSpeed = 720f;
@@ -31,12 +33,21 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         sprintAction = InputSystem.actions.FindAction("Sprint");
         jumpAction = InputSystem.actions.FindAction("Jump");
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
         var input = moveAction.ReadValue<Vector2>();
-        var direction = new Vector3(input.x, 0, input.y);
+        
+        var forward = Camera.transform.forward;
+        forward.y = 0;
+        
+        var right = Camera.transform.right;
+        right.y = 0;
+        
+        var direction = forward * input.y + right * input.x;
+        
         var isRunning = sprintAction.IsPressed() || boxInteraction.HasBox;
         var speed = isRunning ? RunSpeed : WalkSpeed;
 

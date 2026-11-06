@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -287,6 +288,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a621386e5be6419dba4ccdd5ad175221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  target: {fileID: 7333845133206059833}
+  targetOffset: {x: 0, y: 1.5, z: 0}
+  maxDistance: 5
+  sensitivity: 0.1
+  minPitch: -15
+  maxPitch: 80
 --- !u!1 &398656035
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,6 +4403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a925d4775fee0f4c85b6b8b3906ab92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Camera: {fileID: 330585546}
   WalkSpeed: 2.5
   RunSpeed: 5
   RotationSpeed: 720
