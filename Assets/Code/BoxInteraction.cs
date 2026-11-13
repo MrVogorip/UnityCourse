@@ -35,6 +35,7 @@ public class BoxInteraction : MonoBehaviour
 
     private void ThrowBox()
     {
+        boxController.Deselected();
         boxController.transform.SetParent(null);
         boxController.Rigidbody.isKinematic = false;
         boxController.Rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
@@ -63,6 +64,8 @@ public class BoxInteraction : MonoBehaviour
             boxController.GetComponent<RotatorController>().enabled = false;
             boxController.transform.localPosition = Vector3.zero;
             boxController.transform.localRotation = Quaternion.identity;
+            
+            box.Selected();
         }
     }
 

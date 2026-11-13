@@ -209,7 +209,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -2842,7 +2842,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2708086894567524341, guid: 76c1cf1de35f2e546a19f420d1cc02ba, type: 3}
+  - {fileID: 2100000, guid: be23ea9f8f9d98140b3f2ecf79ab7a2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
